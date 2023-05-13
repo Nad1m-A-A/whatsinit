@@ -1,68 +1,54 @@
 @use 'colors' as *;
 @use 'mixins' as *;
-.list {
+.main_board {
     @include responsive_padding($inline:1rem, $block:1rem);
-    @include flex($wrap: nowrap, $align:flex-start,$justify:flex-start, $gap: .7rem);
     @include radius_shadow();
     margin: 2rem auto;
     max-width:990px;
-    max-height: 20rem;
-    overflow: auto;
-    &::-webkit-scrollbar {
-        border-radius: 10px;
-        width: .7rem;
-        height: .7rem;
-        background-color: #111;
-        top: 0;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: #333;
-        border-radius: 10px;
-    }
-
-    // ? FOOD NAMES
-    .outer_food_names_wrapper {
-        position: sticky;
-        left: 0%;
-        z-index: 1;
-        .inner_food_names_wrapper {
-            @include flex($align:center, $justify:center, $wrap: wrap, $gap: 1rem);
-            @include radius_shadow();
-            color: white;
-            background-color: $dark;
-            text-transform: uppercase;
-            padding-bottom: 1rem;
-            // align-self: flex-end;
-            .food_label {
+    .main_board_content {
+        @include flex($wrap: nowrap, $align:flex-start,$justify:flex-start, $gap: .7rem);
+        @include scroll_bar();
+        overflow: auto;
+        padding-bottom: 1rem;
+        padding-right: 1rem;
+        max-height: 20rem;
+        // ! LEFT COLUMN
+        .left_column {
+            position: sticky;
+            left: 0%;
+            z-index: 1;
+            // ! FOOD & NUTRIENT LABEL
+            .food_nutrients_label {
+                @include radius_shadow($radius: 0);
                 position: sticky;
                 top: 0%;
-                min-width: 150px;
+                z-index: 2;
+                min-width: 150px; //x maybe delete
                 color: $dark;
                 background-color: $light_green;
-                &:before {
-                    content: '';
-                    height: 10rem;
-                    width:1099px;
-                    bottom: 100%;
-                    left: -30%;
-                    background-color: $body_bg;
-                    position: absolute;
-                }
+            }
+            // ! FOOD NAMES
+            .food_names_bar {
+                @include flex($align:center, $justify:center, $wrap: wrap, $gap: 1rem);
+                @include radius_shadow();
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                color: white;
+                background-color: $dark;
+                text-transform: uppercase;
+                padding-block: 1rem;
+                align-self: flex-end;
             }
         }
-    }
 
-    // ? NUTRIENS WRAPPER
-    .nutrients_wrapper{
-        @include flex($align:center, $justify:center, $wrap: wrap, $gap: 1rem);
-        padding-left: .5rem;
-
-    // ? NUTRIENTS NAMES
-        .outer_nutrients_names_wrapper {
-            position: sticky;
-            top: 0%;
-            .inner_nutrients_names_wrapper {
-            // padding-right: .5rem;
+        // ! RIGHT COLUMN
+        .right_column{
+            @include flex($align:center, $justify:center, $wrap: wrap, $gap: 1rem);
+            padding-left: .5rem;
+        // ! NUTRIENTS NAMES
+            .nutrients_names_bar {
+                position: sticky;
+                top: 0%;
                 @include flex($align:center, $justify:center, $wrap: nowrap);
                 @include radius_shadow();
                 border-top-left-radius: 0;
@@ -71,22 +57,25 @@
                 color: white;
                 text-transform: uppercase;
             }
-        }
-    // ? NUTRIENTS ROW
-        .facts_row {
-            @include flex($align:center, $justify:center, $wrap: nowrap);
-            & .slot {
-                @include radius_shadow($shadow: 0 2px 10px black);
-                background-color: white;
+        // ! NUTRIENTS ROWS
+            .facts_rows_wrapper {
+                @include flex($align:center, $justify:center, $wrap: wrap, $gap: 1rem);
+            }
+            .facts_row {
+                @include flex($align:center, $justify:center, $wrap: nowrap);
+                & .slot {
+                    @include radius_shadow($shadow: 0 2px 10px black);
+                    background-color: white;
+                }
             }
         }
-    }
 
-    .slot {
-        font-weight: 600;
-        text-align: center;
-        max-width: 8rem;
-        min-width: 8rem;
-        padding: .5rem 0;
+        .slot {
+            font-weight: 600;
+            text-align: center;
+            max-width: 8rem;
+            min-width: 8rem;
+            padding: .5rem 0;
+        }
     }
 }
