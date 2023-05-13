@@ -1,0 +1,20 @@
+@mixin flex($wrap: wrap, $direction: row, $align: center, $justify: center, $gap: 1.5rem) {
+    display: flex;
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+}
+
+
+
+@mixin radius_shadow($radius:5px, $shadow: 0 2px 10px black) {
+    border-radius: $radius;
+    box-shadow: $shadow;
+}
+
+@mixin responsive_padding($inline:3rem, $block:3rem){
+    padding-inline: $inline;
+    padding-block: $block;
+}
