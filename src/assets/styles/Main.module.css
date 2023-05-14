@@ -106,7 +106,6 @@ ul {
   overflow: auto;
   padding-bottom: 1rem;
   padding-right: 1rem;
-  max-height: 20rem;
 }
 .main_board .main_board_content::-webkit-scrollbar {
   border-radius: 10px;
