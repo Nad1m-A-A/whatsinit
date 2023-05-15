@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from '../../assets/styles/Main.module.css';
 
-function FactsRow({facts}) {
+function FactsColumn({facts}) {
     const factsArray = Object.values(facts);
     const latsIndex = factsArray.length - 1;
     for (let i = 0; i < factsArray.length; i++) {
@@ -20,7 +20,7 @@ function FactsRow({facts}) {
     }
 
     return (
-        <div className={`${classes.facts_row}`}>
+        <div className={`${classes.facts_column}`}>
             {factsArray.map((fact, index) => {
                 return (
                     <div className={`${classes.slot}`} key={index}>
@@ -32,4 +32,4 @@ function FactsRow({facts}) {
     )
 }
 
-export default FactsRow
+export default FactsColumn

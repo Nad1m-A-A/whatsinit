@@ -1,4 +1,5 @@
 @use 'mixins' as *;
+@use 'colors' as *;
 * {
     padding: 0;
     margin: 0;
@@ -10,13 +11,17 @@ body {
     background-color: #d9d9d9;
 }
 
+section {
+    @include responsive_padding();
+}
+
 ul {
     list-style-type: none;
 }
 
 .label {
     @include radius_shadow();
-    background-color: #111;
+    background-color: $darker;
     color: white;
     padding: .2rem .5rem;
 }

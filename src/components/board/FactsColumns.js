@@ -1,17 +1,17 @@
 import React from 'react'
 import classes from '../../assets/styles/Main.module.css';
-import FactsRow from './FactsRow';
+import FactsColumn from './FactsColumn';
 
-function FactsRows({facts}) {
+function FactsColumns({facts}) {
     return (
-        <div className={classes.facts_rows_wrapper}>
+        <div className={classes.facts_columns_wrapper}>
             {facts.map((factsObject, index) => {
                 return (
-                    <FactsRow key={index} facts={factsObject}/>
+                    <FactsColumn key={index} facts={factsObject}/>
                 )
             })}
         </div>
     )
 }
 
-export default FactsRows
+export default FactsColumns

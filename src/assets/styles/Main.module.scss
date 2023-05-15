@@ -1,4 +1,5 @@
-@import 'general';
-@import 'header';
-@import '_list';
-@import '_colors';
+@import 'common/general';
+@import 'components/header';
+@import 'components/board';
+@import 'components/layout/loader';
+@import 'components/layout/error';
