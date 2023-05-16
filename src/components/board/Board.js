@@ -19,7 +19,7 @@ function List() {
             setNutrientnsNames(Object.keys(data[0].facts)); //? to get nutrients names (facts objects share nutrients names)
             setFoodNames(data.map(item => item.item)); //? to get food names 
         }
-    }, [data, loading, error])
+    }, [data]) //x maybe I should add error and loading
 
     return (
         <>

@@ -1,0 +1,63 @@
+@use '../common/colors' as *;
+@use '../common/mixins' as *;
+
+.auth {
+    padding: 1rem 3rem;
+    .member_button {
+        cursor: pointer;
+        font-weight: bold;
+        &:hover {
+            border-bottom: solid 3px #999;
+        }
+    }
+    .input_error {
+        animation: fade_in 1s;
+        color: red;
+        margin-top: -1rem;
+        margin-bottom: -.5rem;
+    }
+    @include flex($direction: column, $align: flex-start);
+    .signup, .login {
+        animation: fade_in 1s;
+        @include flex($direction: column, $align: flex-start);
+        input {
+            &::placeholder {
+                color: $darkest;
+                text-transform: uppercase;
+            }
+            border: none;
+            border-bottom: solid 1px $darkest;
+            color: $darkest;
+            background-color: $light;
+            font-size: 16px;
+            padding: .5rem;
+            outline: none;
+            width: 400px;
+        }
+        button {
+            padding: .5rem;
+            background: $dark;
+            color: $light;
+            font-size: 16px;
+            text-transform: uppercase;
+            border: none;
+            box-shadow: -4px 4px 0px black;
+            cursor: pointer;
+            transition: 300ms;
+            &:hover {
+                color: $darkest;
+                transform: scale(.97);
+                background-color: $light_green;
+            }
+        }
+    }
+    
+    @keyframes fade_in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
