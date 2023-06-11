@@ -14,7 +14,7 @@
     box-shadow: $shadow;
 }
 
-@mixin responsive_padding($inline:3rem, $block:2rem){
+@mixin responsive_padding($inline:3rem, $block:3rem){
     padding-inline: $inline;
     padding-block: $block;
 }
@@ -34,4 +34,13 @@
             background-color: #444;
         }
     }
+}
+
+@mixin animation($name, $duration, $delay: 0, $behaviour: default, $count: default, $direction: default){
+    animation-name: $name;
+    animation-duration: $duration;
+    animation-delay: $delay;
+    animation-timing-function: $behaviour;
+    animation-iteration-count: $count;
+    animation-direction: $direction;
 }

@@ -1,17 +1,16 @@
 @use "../common/colors" as *;
 @use '../common/mixins' as *;
 .header {
-    @include flex($direction: column, $justify: flex-start, $gap: 1rem);
+    @include flex($direction: column, $gap: 0rem);
     @include responsive_padding();
-    min-height: 60vh;
     background-color: $light_green;
     color: $darker;
     .navigation {
         @include flex($direction: column, $align: flex-end);
         width: 80%;
-        div {
+        .registration {
             font-size: 30px;
-            svg:hover {
+            .user_icon:hover {
                 cursor: pointer;
                 color: $dark;
                 border-bottom: solid 1px $dark;

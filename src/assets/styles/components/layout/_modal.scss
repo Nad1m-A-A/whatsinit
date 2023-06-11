@@ -3,7 +3,7 @@
 
 .modal {
     .overlay {
-        background-color: rgb(0, 0, 0, .9);
+        backdrop-filter: blur(3px);
         position: fixed;
         top: 0;
         bottom: 0;
@@ -13,10 +13,9 @@
         cursor: grab;
     }
     .modal_content {
+        @include animation(fade_in_up, 500ms);
         @include flex($direction: column, $gap: 0, $justify: flex-start, $align: flex-start);
         @include radius_shadow();
-        min-height: 27rem;
-        min-width: 35rem;
         z-index: 20;
         position: fixed;
         top: 50%;
