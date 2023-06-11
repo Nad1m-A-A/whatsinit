@@ -1,8 +1,9 @@
 import React from 'react'
 import classes from '../../assets/styles/Main.module.css'
-function Loader() {
+function Loader(props) {
+    console.log('props',props);
     return (
-            <div className={classes.loader}>LOADING...</div>
+        <div className={classes.loader}>LOADING...</div>
     )
 }
 

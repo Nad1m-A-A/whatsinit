@@ -1,20 +1,19 @@
 @use '../common/colors' as *;
 @use '../common/mixins' as *;
 .board_section {
-    min-height: 40rem;
-    .board_loader {
+    .loader {
         width: 80px;
         height: 80px;
         margin: 0 auto;
         font-size: 20px;
     }
-    
-    .board_error {
-        width: 300px;
-        height: 50px;
-        background-color: $light_green;
+    .error {
+        @include radius_shadow();
+        max-width: 300px;
+        padding: .7rem 0;
         margin: 0 auto;
         font-size: 20px;
+        background-color: $darkest;
     }
 }
 .main_board {
@@ -22,7 +21,7 @@
     box-shadow: 0 0px 5px black;
     margin: 0 auto;
     max-width: 990px;
-    animation: fade_in 1s;
+    @include animation(fade_in_up, 1s);
 
     .main_board_content {
         @include flex($wrap: nowrap, $align:flex-start,$justify:flex-start, $gap: 1rem);
@@ -91,20 +90,6 @@
             min-width: 8rem;
             padding: .5rem 0;
         }
-    }
-}
-
-@keyframes fade_in {
-    0% {
-        opacity: 0;
-        transform: translateY(10%);
-    }
-    50% {
-        transform: translateY(-3%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
     }
 }
 

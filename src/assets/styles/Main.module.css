@@ -12,7 +12,7 @@ body {
 
 section {
   padding-inline: 3rem;
-  padding-block: 2rem;
+  padding-block: 3rem;
 }
 
 ul {
@@ -32,6 +32,93 @@ ul {
   font-family: "Kaushan Script", cursive;
 }
 
+@-webkit-keyframes race {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    height: 4px;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes race {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    height: 4px;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade_in_up {
+  0% {
+    opacity: 0;
+    margin-top: 2rem;
+  }
+  50% {
+    margin-top: -1rem;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0rem;
+  }
+}
+@keyframes fade_in_up {
+  0% {
+    opacity: 0;
+    margin-top: 2rem;
+  }
+  50% {
+    margin-top: -1rem;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0rem;
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+            transform: rotateZ(-360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+            transform: rotateZ(-360deg);
+  }
+}
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -45,13 +132,12 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0rem;
   padding-inline: 3rem;
-  padding-block: 2rem;
-  min-height: 60vh;
+  padding-block: 3rem;
   background-color: rgb(131, 192, 115);
   color: #222;
 }
@@ -74,10 +160,10 @@ ul {
   gap: 1.5rem;
   width: 80%;
 }
-.header .navigation div {
+.header .navigation .registration {
   font-size: 30px;
 }
-.header .navigation div svg:hover {
+.header .navigation .registration .user_icon:hover {
   cursor: pointer;
   color: #333;
   border-bottom: solid 1px #333;
@@ -140,21 +226,21 @@ ul {
     text-align: left;
   }
 }
-.board_section {
-  min-height: 40rem;
-}
-.board_section .board_loader {
+.board_section .loader {
   width: 80px;
   height: 80px;
   margin: 0 auto;
   font-size: 20px;
 }
-.board_section .board_error {
-  width: 300px;
-  height: 50px;
-  background-color: rgb(131, 192, 115);
+.board_section .error {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px black;
+          box-shadow: 0 0 5px black;
+  max-width: 300px;
+  padding: 0.7rem 0;
   margin: 0 auto;
   font-size: 20px;
+  background-color: #111;
 }
 
 .main_board {
@@ -164,8 +250,18 @@ ul {
           box-shadow: 0 0px 5px black;
   margin: 0 auto;
   max-width: 990px;
-  -webkit-animation: fade_in 1s;
-          animation: fade_in 1s;
+  -webkit-animation-name: fade_in_up;
+          animation-name: fade_in_up;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-timing-function: default;
+          animation-timing-function: default;
+  -webkit-animation-iteration-count: default;
+          animation-iteration-count: default;
+  -webkit-animation-direction: default;
+          animation-direction: default;
 }
 .main_board .main_board_content {
   display: -webkit-box;
@@ -338,39 +434,6 @@ ul {
   padding: 0.5rem 0;
 }
 
-@-webkit-keyframes fade_in {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  50% {
-    -webkit-transform: translateY(-3%);
-            transform: translateY(-3%);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
-
-@keyframes fade_in {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  50% {
-    -webkit-transform: translateY(-3%);
-            transform: translateY(-3%);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
 @media screen and (max-width: 800px) {
   .main_board .main_board_content .left_column .food_nutrients_label {
     min-width: 120px;
@@ -432,8 +495,6 @@ ul {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 1.5rem;
-  width: 100%;
-  height: 100%;
   font-weight: 600;
   position: relative;
 }
@@ -445,58 +506,28 @@ ul {
   height: 100%;
   border-radius: 50%;
   border-bottom: rgb(131, 192, 115) solid 5px;
-  -webkit-animation: rotate 600ms linear infinite;
-          animation: rotate 600ms linear infinite;
+  -webkit-animation-name: rotate;
+          animation-name: rotate;
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: default;
+          animation-direction: default;
 }
 
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(-360deg);
-            transform: rotateZ(-360deg);
-  }
-}
-
-@keyframes rotate {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(-360deg);
-            transform: rotateZ(-360deg);
-  }
-}
 .error {
-  border-radius: 5px;
-  -webkit-box-shadow: 0 0 5px black;
-          box-shadow: 0 0 5px black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 1.5rem;
-  width: 100%;
-  height: 100%;
-  font-weight: 600;
+  text-align: center;
+  color: red;
 }
 
 .modal .overlay {
-  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -507,6 +538,18 @@ ul {
   cursor: grab;
 }
 .modal .modal_content {
+  -webkit-animation-name: fade_in_up;
+          animation-name: fade_in_up;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-timing-function: default;
+          animation-timing-function: default;
+  -webkit-animation-iteration-count: default;
+          animation-iteration-count: default;
+  -webkit-animation-direction: default;
+          animation-direction: default;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -526,8 +569,6 @@ ul {
   border-radius: 5px;
   -webkit-box-shadow: 0 0 5px black;
           box-shadow: 0 0 5px black;
-  min-height: 27rem;
-  min-width: 35rem;
   z-index: 20;
   position: fixed;
   top: 50%;
@@ -556,7 +597,7 @@ ul {
 }
 
 .auth {
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -582,13 +623,29 @@ ul {
   border-bottom: solid 3px #999;
 }
 .auth .input_error {
+  -webkit-animation-name: fade_in;
+          animation-name: fade_in;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-timing-function: default;
+          animation-timing-function: default;
+  -webkit-animation-iteration-count: default;
+          animation-iteration-count: default;
+  -webkit-animation-direction: default;
+          animation-direction: default;
   color: red;
   margin-top: -1rem;
   margin-bottom: -0.5rem;
 }
+.auth .loader {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  font-size: 14px;
+}
 .auth .signup, .auth .login {
-  -webkit-animation: fade_in 1s;
-          animation: fade_in 1s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -605,10 +662,51 @@ ul {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 1.5rem;
+  -webkit-animation-name: fade_in;
+          animation-name: fade_in;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-timing-function: default;
+          animation-timing-function: default;
+  -webkit-animation-iteration-count: default;
+          animation-iteration-count: default;
+  -webkit-animation-direction: default;
+          animation-direction: default;
+}
+.auth .signup h2, .auth .login h2 {
+  position: relative;
+  padding: 5px;
+}
+.auth .signup h2:after, .auth .login h2:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 3px;
+  width: 100%;
+  background-color: rgb(131, 192, 115);
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  -webkit-animation-name: race;
+          animation-name: race;
+  -webkit-animation-duration: 800ms;
+          animation-duration: 800ms;
+  -webkit-animation-delay: 100ms;
+          animation-delay: 100ms;
+  -webkit-animation-timing-function: default;
+          animation-timing-function: default;
+  -webkit-animation-iteration-count: default;
+          animation-iteration-count: default;
+  -webkit-animation-direction: default;
+          animation-direction: default;
 }
 .auth .signup input, .auth .login input {
+  -webkit-transition: 300ms;
+  transition: 300ms;
   border: none;
-  border-bottom: solid 1px #111;
+  border-bottom: solid 1px #333;
   color: #111;
   background-color: #d9d9d9;
   font-size: 16px;
@@ -618,23 +716,18 @@ ul {
 }
 .auth .signup input::-webkit-input-placeholder, .auth .login input::-webkit-input-placeholder {
   color: #111;
-  text-transform: uppercase;
 }
 .auth .signup input::-moz-placeholder, .auth .login input::-moz-placeholder {
   color: #111;
-  text-transform: uppercase;
 }
 .auth .signup input:-ms-input-placeholder, .auth .login input:-ms-input-placeholder {
   color: #111;
-  text-transform: uppercase;
 }
 .auth .signup input::-ms-input-placeholder, .auth .login input::-ms-input-placeholder {
   color: #111;
-  text-transform: uppercase;
 }
 .auth .signup input::placeholder, .auth .login input::placeholder {
   color: #111;
-  text-transform: uppercase;
 }
 .auth .signup button, .auth .login button {
   padding: 0.5rem;
@@ -648,6 +741,7 @@ ul {
   cursor: pointer;
   -webkit-transition: 300ms;
   transition: 300ms;
+  border-radius: 5px;
 }
 .auth .signup button:hover, .auth .login button:hover {
   color: #111;
@@ -655,11 +749,16 @@ ul {
           transform: scale(0.97);
   background-color: rgb(131, 192, 115);
 }
-@keyframes fade_in {
-  from {
-    opacity: 0;
+@media screen and (max-width: 600px) {
+  .auth input {
+    max-width: 350px;
   }
-  to {
-    opacity: 1;
+  .auth h2 {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .auth input {
+    max-width: 230px;
   }
 }

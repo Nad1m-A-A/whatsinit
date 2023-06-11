@@ -23,7 +23,7 @@ function List() {
 
     return (
         <>
-            {/* //! RETURN WHEN THERE IS DATA */}
+            {/*//! RETURN WHEN THERE IS DATA */}
             {data && <div className={`${classes.main_board}`}>
                 <div className={classes.main_board_content}>
                     <div className={classes.left_column}>
@@ -37,17 +37,11 @@ function List() {
                 </div>
             </div>}
 
-            {/* //! RETURN WHEN LOADING */}
-            {loading && 
-            <div className={classes.board_loader}>
-                <Loader/>
-            </div>}
+            {/*//! RETURN WHEN LOADING */}
+            {loading && <Loader/>}
 
-            {/* //! RETURN WHEN THERE IS ERROR */}
-            {error && 
-            <div className={classes.board_error}>
-                <ErrorMessage error={error}/>
-            </div>}
+            {/*//! RETURN WHEN THERE IS ERROR */}
+            {error && <ErrorMessage error={error}/>}
         </>
     )
 }
