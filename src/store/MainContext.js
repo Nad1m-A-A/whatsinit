@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from "react";
 
-export const MainContext = createContext();
+const MainContext = createContext();
+export default MainContext;
 
 const initialData = {
     food: null,
@@ -18,7 +19,7 @@ const reducer = (state, action) => {
 }
 
 
-export default ({children}) => {
+export const MainContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialData);
     const storeFood = (food) => {
         dispatch({type:"STORE_FOOD", payload:food})

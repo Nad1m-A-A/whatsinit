@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import classes from '../../assets/styles/Main.module.css'
 import Signup from './Signup'
 import Login from './Login';

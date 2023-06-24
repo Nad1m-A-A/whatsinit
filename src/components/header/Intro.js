@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from '../../assets/styles/Main.module.css';
 function Intro() {
+    console.log('intro rendering');
     return (
         <div className={`${classes.intro}`}>
             <div className={`${classes.special_font}`}>
@@ -20,7 +21,7 @@ function Intro() {
                 <li className={classes.label}>Minerals</li>
             </ul>
             <p>
-                'what's in it' sheds the light only on water, carbs, protein, fat, and fiber.
+                "what's in it" sheds the light only on water, carbs, protein, fat, and fiber.
             </p>
         </div>
     )
