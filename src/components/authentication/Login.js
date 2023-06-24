@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 import classes from '../../assets/styles/Main.module.css'
 import useFetch from '../../hooks/useFetch';
-import {MainContext} from '../../store/MainContext';
+import MainContext from '../../store/MainContext';
 function Login() {
     const {storeUser} = useContext(MainContext);
     const emRef = useRef(null);
@@ -14,6 +15,7 @@ function Login() {
         method: "POST",
         body: JSON.stringify(userInputs),
     });
+    const navigate = useNavigate();
 
     // !HANDLE RESPONSE DATA
     useEffect(() => {
@@ -31,8 +33,10 @@ function Login() {
         if(data === Object(data)) {
             emRef.current.value = '';
             pwRef.current.value = '';
-            storeUser(data);
-            localStorage.setItem('whatsinit_user', JSON.stringify(data));
+            storeUser({username: data[0].username});
+            const forLocalStorage = {username: data[0].username}
+            localStorage.setItem('whatsinit_user', JSON.stringify(forLocalStorage));
+            navigate('profile');
         }
     },[data])
 
@@ -56,7 +60,6 @@ function Login() {
         })
         setUrl("http://localhost/whatsinit/getters/user.php");
     }
-    console.log(data, loading, error);
     return (
         <div className={classes.login}>
             <h2>Login to your account</h2>

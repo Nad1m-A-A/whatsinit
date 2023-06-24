@@ -1,13 +1,10 @@
-import React from 'react'
-import Intro from './Intro'
-import Navigation from './Navigation'
+import React from 'react';
 import classes from '../../assets/styles/Main.module.css'
-function Header() {
+function Header(props) {
     return (
-        <div className={classes.header}>
-            <Navigation/>
-            <Intro/>
-        </div>
+        <section className={classes.header_section}>
+            {props.children}
+        </section>
     )
 }
 

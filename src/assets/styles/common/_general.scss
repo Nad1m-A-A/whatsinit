@@ -8,11 +8,11 @@
 
 body {
     font-family: 'Hind Vadodara', sans-serif;
-    background-color: #d9d9d9;
 }
 
 section {
     @include responsive_padding();
+    min-height: 100vh;
 }
 
 ul {
@@ -28,6 +28,22 @@ ul {
 
 .special_font {
     font-family: 'Kaushan Script', cursive;
+}
+
+.slot {
+    font-weight: 600;
+    text-align: center;
+    max-width: 8rem;
+    min-width: 8rem;
+    padding: .5rem 0;
+}
+
+.line {
+    max-width: 20rem;
+    height: .1rem;
+    background-color: $dark;
+    margin: 1rem auto;
+    box-shadow: 10px 5px 0 $light-green, 5px -5px 0 $light;
 }
 
 @keyframes race {

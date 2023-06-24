@@ -21,28 +21,42 @@ function List() {
         }
     }, [data]) //x maybe I should add error and loading
 
-    return (
-        <>
-            {/*//! RETURN WHEN THERE IS DATA */}
-            {data && <div className={`${classes.main_board}`}>
-                <div className={classes.main_board_content}>
-                    <div className={classes.left_column}>
-                        <FoodAndNutrientsLabel/>
-                        <NutrientsNamesBar nutrientsNames={nutrientsNames}/>
-                    </div>
-                    <div className={classes.right_column}>
-                        <FoodNamesBar foodNames={foodNames}/>
-                        <FactsColumns facts={facts}/>
-                    </div>
-                </div>
-            </div>}
+    const filterBoard = (e) => {
+        const filteredFactArray = data.filter(food => food.item.includes(e.target.value.toLowerCase()));
+        if(filteredFactArray.length > 0) {
+            setFacts(filteredFactArray.map(food => food.facts))
+            setNutrientnsNames(Object.keys(filteredFactArray[0].facts));
+            setFoodNames(filteredFactArray.map(item => item.item))
+        }
+    }
 
+    return (
+        <section className={classes.board_section}>
+            <div className={classes.board_wrapper}>
+                {data && <div className={classes.board_caption_and_filters}>
+                    <h3>Here is a table including nutrients facts:</h3>
+                    <input onChange={filterBoard} className={classes.search_input} placeholder='Search items'/>
+                </div>}
+                {data && <div className={`${classes.main_board}`}>
+                    {/*//! RETURN WHEN THERE IS DATA */}
+                    {data && <div className={classes.main_board_content}>
+                        <div className={classes.left_column}>
+                            <FoodAndNutrientsLabel/>
+                            <NutrientsNamesBar nutrientsNames={nutrientsNames}/>
+                        </div>
+                        <div className={classes.right_column}>
+                            <FoodNamesBar foodNames={foodNames}/>
+                            <FactsColumns facts={facts}/>
+                        </div>
+                    </div>}
+                </div>}
+            </div>
             {/*//! RETURN WHEN LOADING */}
             {loading && <Loader/>}
 
             {/*//! RETURN WHEN THERE IS ERROR */}
             {error && <ErrorMessage error={error}/>}
-        </>
+        </section>            
     )
 }
 

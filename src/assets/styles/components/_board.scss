@@ -1,105 +1,143 @@
 @use '../common/colors' as *;
 @use '../common/mixins' as *;
 .board_section {
+    @include flex();
+    & > div {
+        min-width: 0; //! using min-width or overflow will allow the child div to resize
+        // overflow: hidden; //! this might cause problems in the div styleing
+    }
+    .board_caption_and_filters {
+        // @include flex($direction: column, $align: flex-start, $gap: 1rem);
+        @include flex($direction: row, $justify: space-between, $gap: 1rem);
+        padding-bottom: 1rem;
+        .search_input {
+            font-size: 17px;
+            padding: .4rem;
+            box-shadow: 0 0 1px black;
+            border: none;
+        }
+        h3 {
+            text-transform: capitalize;
+        }
+    }
     .loader {
         width: 80px;
         height: 80px;
-        margin: 0 auto;
         font-size: 20px;
     }
     .error {
         @include radius_shadow();
         max-width: 300px;
         padding: .7rem 0;
-        margin: 0 auto;
         font-size: 20px;
         background-color: $darkest;
     }
+    .board_wrapper {
+        width: 66%;
+    }
 }
-.main_board {
-    @include responsive_padding($inline:1rem, $block:1rem);
-    box-shadow: 0 0px 5px black;
-    margin: 0 auto;
-    max-width: 990px;
-    @include animation(fade_in_up, 1s);
 
+.main_board {
+    justify-self: flex-start;
+    @include responsive_padding($inline:1rem, $block:1rem);
+    @include animation(fade_in_up, 1s);
+    max-width: 990px;
+    backdrop-filter: brightness(0.9);
+    box-shadow: 0 0px 2px black;
     .main_board_content {
         @include flex($wrap: nowrap, $align:flex-start,$justify:flex-start, $gap: 1rem);
         @include scroll_bar();
         overflow: auto;
-        padding-bottom: .5rem;
+        padding-bottom: 1rem;
         // ! LEFT COLUMN
         .left_column {
             position: sticky;
             left: 0%;
             z-index: 1;
+            border-radius: 5px;
             // ! FOOD & NUTRIENT LABEL
             .food_nutrients_label {
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
                 position: sticky;
                 top: 0%;
                 z-index: 2;
                 min-width: 150px;
-                color: $darkest;
-                background-color: $light_green;
+                color: $light;
+                background-color: $darker;
             }
             // ! NUTRIENTS NAMES
             .nutrients_names_bar {
                 @include flex($align:center, $justify:center, $wrap: wrap);
-                @include radius_shadow($radius: 0);
-                border-bottom-right-radius: 25px;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
                 color: white;
-                background-color: $darker;
+                background-color: $light_green;
                 text-transform: uppercase;
                 padding-block: 1rem;
                 align-self: flex-end;
+                max-width: 150px;
             }
         }
 
         // ! RIGHT COLUMN
         .right_column{
-            @include flex($align:center, $justify:center, $wrap: wrap, $gap: 1rem);
+            @include flex($align:flex-start, $justify:flex-start, $wrap: wrap, $gap: 1rem, $direction:column);
             // ! FOOD NAMES
             .food_names_bar {
                 @include flex($align:center, $justify:center, $wrap: nowrap);
-                @include radius_shadow($radius: 0);
-                border-bottom-left-radius: 25px;
+                border-radius: 5px;
                 position: sticky;
                 top: 0%;
-                background-color: $darker;
+                background-color: $light_green;
                 color: white;
                 text-transform: uppercase;
-                padding-right: .5rem;
             }
             // ! NUTRIENTS COLUMNS
             .facts_columns_wrapper {
                 @include flex($align:center, $justify:center, $wrap: wrap);
             }
+            .facts_column:nth-child(even) {
+                .slot {
+                    background: none;
+                    outline: solid 1px white;
+                    
+                }
+            }
             .facts_column {
                 @include flex($align:center, $justify:center, $wrap: nowrap, $direction: column);
                 & .slot {
-                    @include radius_shadow($shadow: none);
+                    border-radius: 5px;
                     background-color: white;
                 }
             }
         }
+    }
+}
 
-        .slot {
-            font-weight: 600;
-            text-align: center;
-            max-width: 8rem;
-            min-width: 8rem;
-            padding: .5rem 0;
+@media screen and (max-width: 1100px) {
+    .board_section {
+        .board_wrapper {
+            width: 90%;
         }
     }
 }
 
 @media screen and (max-width: 800px) {
+    .board_section {
+        .board_caption_and_filters {
+            gap: 1rem;
+            .search_input {
+                font-size: 14px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+        }
+    }
     .main_board {
         .main_board_content {
             .left_column {
-                .food_nutrients_label {
-                    min-width: 120px;
-                }
                 .nutrients_names_bar {
                     gap: 1rem;
                 }
@@ -125,6 +163,19 @@
 }
 
 @media screen and (max-width: 600px) {
+    .board_section {
+        .board_wrapper {
+            width: auto;
+        }
+        .board_caption_and_filters {
+            .search_input {
+                font-size: 12px;
+            }
+            h3 {
+                font-size: 16px;
+            }
+        }
+    }
     .main_board {
         .main_board_content {
             .left_column {
@@ -133,6 +184,7 @@
                 }
                 .nutrients_names_bar {
                     gap: .8rem;
+                    max-width: 100px;
                 }
             }
             .right_column {

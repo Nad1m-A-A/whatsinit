@@ -1,10 +1,11 @@
 @use "../common/colors" as *;
 @use '../common/mixins' as *;
-.header {
-    @include flex($direction: column, $gap: 0rem);
-    @include responsive_padding();
+.header_section {
+    @include flex($direction: row, $align: flex-start);
     background-color: $light_green;
     color: $darker;
+    background-image: url('../images/AdobeStock_27846023.jpeg');
+    background-size: cover;
     .navigation {
         @include flex($direction: column, $align: flex-end);
         width: 80%;
@@ -16,9 +17,18 @@
                 border-bottom: solid 1px $dark;
             }
         }
+        .slot {
+            background-color: $light;
+            box-shadow: 0 0 5px grey;
+            cursor: pointer;
+        }
     }
     .intro {
         @include flex($direction: column);
+        padding: 1rem;
+        box-shadow: 0px 0px 5px grey;
+        border-radius: 5px;
+        backdrop-filter: blur(5px);
         h1 {
             font-size: clamp(1.5rem, 2.5vw, 2rem);    }
     
@@ -35,7 +45,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .header {
+    .header_section {
         .intro {
             ul {
                 font-size: 14px;
@@ -48,7 +58,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .header {
+    .header_section {
         .intro {
             p {
                 text-align: left;
