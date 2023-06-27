@@ -32,14 +32,14 @@ function List() {
 
     return (
         <section className={classes.board_section}>
-            <div className={classes.board_wrapper}>
-                {data && <div className={classes.board_caption_and_filters}>
+            {data && <div className={classes.board_wrapper}>
+                <div className={classes.board_caption_and_filters}>
                     <h3>Here is a table including nutrients facts:</h3>
                     <input onChange={filterBoard} className={classes.search_input} placeholder='Search items'/>
-                </div>}
-                {data && <div className={`${classes.main_board}`}>
+                </div>
+                <div className={`${classes.main_board}`}>
                     {/*//! RETURN WHEN THERE IS DATA */}
-                    {data && <div className={classes.main_board_content}>
+                    <div className={classes.main_board_content}>
                         <div className={classes.left_column}>
                             <FoodAndNutrientsLabel/>
                             <NutrientsNamesBar nutrientsNames={nutrientsNames}/>
@@ -48,9 +48,9 @@ function List() {
                             <FoodNamesBar foodNames={foodNames}/>
                             <FactsColumns facts={facts}/>
                         </div>
-                    </div>}
-                </div>}
-            </div>
+                    </div>
+                </div>
+            </div>}
             {/*//! RETURN WHEN LOADING */}
             {loading && <Loader/>}
 
