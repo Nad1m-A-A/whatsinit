@@ -7,6 +7,8 @@
 
 body {
   font-family: "Hind Vadodara", sans-serif;
+  background-image: url("../images/stacked-peaks-haikei.svg");
+  background-size: cover;
 }
 
 section {
@@ -153,9 +155,7 @@ ul {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 1.5rem;
-  background-color: #4E9F3D;
   color: #222;
-  background-image: url("../images/AdobeStock_27846023.jpeg");
   background-size: cover;
 }
 .header_section .navigation {
@@ -209,11 +209,9 @@ ul {
           justify-content: center;
   gap: 1.5rem;
   padding: 1rem;
-  -webkit-box-shadow: 0px 0px 5px grey;
-          box-shadow: 0px 0px 5px grey;
   border-radius: 5px;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  background-image: url("../images/blurry-gradient-haikei.svg");
+  background-size: cover;
 }
 .header_section .intro h1 {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -298,12 +296,12 @@ ul {
 .board_section .board_caption_and_filters .search_input {
   font-size: 17px;
   padding: 0.4rem;
-  -webkit-box-shadow: 0 0 1px black;
-          box-shadow: 0 0 1px black;
-  border: none;
+  border: solid 1px grey;
+  border-radius: 3px;
 }
 .board_section .board_caption_and_filters h3 {
   text-transform: capitalize;
+  color: #d9d9d9;
 }
 .board_section .loader {
   width: 80px;
@@ -324,7 +322,6 @@ ul {
 }
 
 .main_board {
-  justify-self: flex-start;
   padding-inline: 1rem;
   padding-block: 1rem;
   -webkit-animation-name: fade_in_up;
@@ -340,10 +337,10 @@ ul {
   -webkit-animation-direction: default;
           animation-direction: default;
   max-width: 990px;
-  -webkit-backdrop-filter: brightness(0.9);
-          backdrop-filter: brightness(0.9);
-  -webkit-box-shadow: 0 0px 2px black;
-          box-shadow: 0 0px 2px black;
+  background: #d9d9d9;
+  border: solid 1px grey;
+  border-radius: 3px;
+  position: relative;
 }
 .main_board .main_board_content {
   display: -webkit-box;
@@ -362,23 +359,6 @@ ul {
       -ms-flex-pack: start;
           justify-content: flex-start;
   gap: 1rem;
-  overflow: auto;
-  padding-bottom: 1rem;
-}
-.main_board .main_board_content::-webkit-scrollbar {
-  border-radius: 5px;
-  width: 0.8rem;
-  height: 0.6rem;
-  background-color: transparent;
-  top: 0;
-}
-.main_board .main_board_content::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: #222;
-}
-.main_board .main_board_content::-webkit-scrollbar-thumb:hover {
-  cursor: pointer;
-  background-color: #444;
 }
 .main_board .main_board_content .left_column {
   position: sticky;
@@ -395,6 +375,7 @@ ul {
   min-width: 150px;
   color: #d9d9d9;
   background-color: #222;
+  min-height: 4rem;
 }
 .main_board .main_board_content .left_column .nutrients_names_bar {
   display: -webkit-box;
@@ -423,7 +404,31 @@ ul {
       align-self: flex-end;
   max-width: 150px;
 }
+.main_board .main_board_content .left_column .nutrients_names_bar .slot {
+  position: relative;
+}
+.main_board .main_board_content .left_column .nutrients_names_bar .slot .nutrient_info {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px black;
+          box-shadow: 0 0 5px black;
+  background-color: #d9d9d9;
+  color: #333;
+  text-align: left;
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 100%;
+  width: 300px;
+  padding: 1rem;
+  display: none;
+}
+.main_board .main_board_content .left_column .nutrients_names_bar .slot .popup {
+  display: block;
+}
 .main_board .main_board_content .right_column {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  max-width: 990px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -440,6 +445,21 @@ ul {
       -ms-flex-pack: start;
           justify-content: flex-start;
   gap: 1rem;
+}
+.main_board .main_board_content .right_column::-webkit-scrollbar {
+  border-radius: 5px;
+  width: 0.8rem;
+  height: 0.6rem;
+  background-color: transparent;
+  top: 0;
+}
+.main_board .main_board_content .right_column::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #222;
+}
+.main_board .main_board_content .right_column::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background-color: #444;
 }
 .main_board .main_board_content .right_column .food_names_bar {
   display: -webkit-box;
@@ -464,13 +484,14 @@ ul {
   background-color: #4E9F3D;
   color: white;
   text-transform: uppercase;
+  min-height: 4rem;
 }
 .main_board .main_board_content .right_column .facts_columns_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -506,6 +527,7 @@ ul {
   gap: 1.5rem;
 }
 .main_board .main_board_content .right_column .facts_column .slot {
+  font-weight: 500;
   border-radius: 5px;
   background-color: white;
 }

@@ -6,7 +6,9 @@ function FoodNamesBar({foodNames}) {
         <div className={`${classes.food_names_bar}`}>
             {foodNames.map((foodName, index) => {
                 return (
-                    <div className={`${classes.slot}`} key={index}>{foodName}</div>
+                    <div className={`${classes.slot}`} key={index}>
+                        {foodName}
+                    </div>
                 )
             })}
         </div>

@@ -1,23 +1,25 @@
 @use '../common/colors' as *;
 @use '../common/mixins' as *;
 .board_section {
+    // background-image: url('../images/stacked-peaks-haikei.svg');
+    // background-size: cover;
     @include flex();
     & > div {
         min-width: 0; //! using min-width or overflow will allow the child div to resize
         // overflow: hidden; //! this might cause problems in the div styleing
     }
     .board_caption_and_filters {
-        // @include flex($direction: column, $align: flex-start, $gap: 1rem);
         @include flex($direction: row, $justify: space-between, $gap: 1rem);
         padding-bottom: 1rem;
         .search_input {
             font-size: 17px;
             padding: .4rem;
-            box-shadow: 0 0 1px black;
-            border: none;
+            border: solid 1px grey;
+            border-radius: 3px;
         }
         h3 {
             text-transform: capitalize;
+            color: $light;
         }
     }
     .loader {
@@ -38,17 +40,18 @@
 }
 
 .main_board {
-    justify-self: flex-start;
     @include responsive_padding($inline:1rem, $block:1rem);
     @include animation(fade_in_up, 1s);
     max-width: 990px;
-    backdrop-filter: brightness(0.9);
-    box-shadow: 0 0px 2px black;
+    background: $light;
+    border: solid 1px grey;
+    border-radius: 3px;
+    position: relative;
     .main_board_content {
         @include flex($wrap: nowrap, $align:flex-start,$justify:flex-start, $gap: 1rem);
-        @include scroll_bar();
-        overflow: auto;
-        padding-bottom: 1rem;
+        // @include scroll_bar();
+        // overflow-x: auto;
+        // padding-bottom: 1rem;
         // ! LEFT COLUMN
         .left_column {
             position: sticky;
@@ -65,6 +68,7 @@
                 min-width: 150px;
                 color: $light;
                 background-color: $darker;
+                min-height: 4rem; //xxxxxxxxxx
             }
             // ! NUTRIENTS NAMES
             .nutrients_names_bar {
@@ -77,11 +81,34 @@
                 padding-block: 1rem;
                 align-self: flex-end;
                 max-width: 150px;
+                .slot {
+                    position: relative;
+                    .nutrient_info {
+                        @include radius_shadow();
+                        background-color: $light;
+                        color: $dark;
+                        text-align: left;
+                        position: absolute;
+                        z-index: 100;
+                        bottom: 0;
+                        left: 100%;
+                        width: 300px;
+                        padding: 1rem;
+                        display: none;
+                    }
+                    .popup {
+                        display: block;
+                    }
+                }
             }
         }
 
         // ! RIGHT COLUMN
         .right_column{
+        overflow-x: auto;
+        @include scroll_bar();
+        padding-bottom: 1rem;
+        max-width: 990px;
             @include flex($align:flex-start, $justify:flex-start, $wrap: wrap, $gap: 1rem, $direction:column);
             // ! FOOD NAMES
             .food_names_bar {
@@ -92,10 +119,11 @@
                 background-color: $light_green;
                 color: white;
                 text-transform: uppercase;
+                min-height: 4rem;
             }
             // ! NUTRIENTS COLUMNS
             .facts_columns_wrapper {
-                @include flex($align:center, $justify:center, $wrap: wrap);
+                @include flex($align:center, $justify:center, $wrap: nowrap);
             }
             .facts_column:nth-child(even) {
                 .slot {
@@ -106,7 +134,8 @@
             }
             .facts_column {
                 @include flex($align:center, $justify:center, $wrap: nowrap, $direction: column);
-                & .slot {
+                .slot {
+                    font-weight: 500;
                     border-radius: 5px;
                     background-color: white;
                 }
