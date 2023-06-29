@@ -1,8 +1,8 @@
 @use '../common/colors' as *;
 @use '../common/mixins' as *;
 .board_section {
-    // background-image: url('../images/stacked-peaks-haikei.svg');
-    // background-size: cover;
+    background-image: url('../images/growth-close-up-environmental-lush-natural.jpg');
+    background-size: 400px;
     @include flex();
     & > div {
         min-width: 0; //! using min-width or overflow will allow the child div to resize
@@ -10,7 +10,12 @@
     }
     .board_caption_and_filters {
         @include flex($direction: row, $justify: space-between, $gap: 1rem);
-        padding-bottom: 1rem;
+        @include responsive_padding($inline: 1rem, $block:1rem);
+        max-width: 990px;
+        margin-bottom: .3rem;
+        backdrop-filter: blur(30px);
+        box-shadow: 0 1px 3px grey;
+        border-radius: 3px;
         .search_input {
             font-size: 17px;
             padding: .4rem;
@@ -19,7 +24,6 @@
         }
         h3 {
             text-transform: capitalize;
-            color: $light;
         }
     }
     .loader {
@@ -40,18 +44,20 @@
 }
 
 .main_board {
-    @include responsive_padding($inline:1rem, $block:1rem);
+    @include responsive_padding($inline:1.5rem, $block:1.5rem);
     @include animation(fade_in_up, 1s);
     max-width: 990px;
-    background: $light;
-    border: solid 1px grey;
+    backdrop-filter: blur(30px);
+    // border: solid 3px greenyellow;
+    box-shadow: 0 0px 5px grey;
     border-radius: 3px;
-    position: relative;
     .main_board_content {
+        // background-image: url('../images/growth-close-up-environmental-lush-natural.jpg');
+        // background-image: url('../images/AdobeStock_142000742.jpeg');
+        // background-size: cover;
+        // background-position: center;
         @include flex($wrap: nowrap, $align:flex-start,$justify:flex-start, $gap: 1rem);
-        // @include scroll_bar();
-        // overflow-x: auto;
-        // padding-bottom: 1rem;
+        padding-right: .3rem;
         // ! LEFT COLUMN
         .left_column {
             position: sticky;
@@ -128,8 +134,9 @@
             .facts_column:nth-child(even) {
                 .slot {
                     background: none;
-                    outline: solid 1px white;
-                    
+                    // outline: solid 1px $dark;
+                    box-shadow: 0 0 2px $darker;
+                    color: $darker;
                 }
             }
             .facts_column {
@@ -137,7 +144,9 @@
                 .slot {
                     font-weight: 500;
                     border-radius: 5px;
-                    background-color: white;
+                    background-color: $darker;
+                    color: $darker;
+                    color: $light;
                 }
             }
         }

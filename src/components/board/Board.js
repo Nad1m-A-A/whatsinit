@@ -22,7 +22,7 @@ function List() {
     }, [data]) //x maybe I should add error and loading
 
     const filterBoard = (e) => {
-        const filteredFactArray = data.filter(food => food.item.includes(e.target.value.toLowerCase()));
+        const filteredFactArray = data.filter(food => food.item.startsWith(e.target.value.toLowerCase()));
         if(filteredFactArray.length > 0) {
             setFacts(filteredFactArray.map(food => food.facts))
             setNutrientnsNames(Object.keys(filteredFactArray[0].facts));
