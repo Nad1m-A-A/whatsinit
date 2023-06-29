@@ -7,8 +7,6 @@
 
 body {
   font-family: "Hind Vadodara", sans-serif;
-  background-image: url("../images/stacked-peaks-haikei.svg");
-  background-size: cover;
 }
 
 section {
@@ -47,8 +45,8 @@ ul {
   height: 0.1rem;
   background-color: #333;
   margin: 1rem auto;
-  -webkit-box-shadow: 10px 5px 0 #4E9F3D, 5px -5px 0 #d9d9d9;
-          box-shadow: 10px 5px 0 #4E9F3D, 5px -5px 0 #d9d9d9;
+  -webkit-box-shadow: 10px 5px 0 rgb(37, 86, 3), 5px -5px 0 #d9d9d9;
+          box-shadow: 10px 5px 0 rgb(37, 86, 3), 5px -5px 0 #d9d9d9;
 }
 
 @-webkit-keyframes race {
@@ -156,6 +154,7 @@ ul {
           justify-content: center;
   gap: 1.5rem;
   color: #222;
+  background-image: url("../images/AdobeStock_27846023.jpeg");
   background-size: cover;
 }
 .header_section .navigation {
@@ -210,8 +209,10 @@ ul {
   gap: 1.5rem;
   padding: 1rem;
   border-radius: 5px;
-  background-image: url("../images/blurry-gradient-haikei.svg");
-  background-size: cover;
+  -webkit-box-shadow: 0px 0px 5px grey;
+          box-shadow: 0px 0px 5px grey;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 .header_section .intro h1 {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -254,6 +255,8 @@ ul {
   }
 }
 .board_section {
+  background-image: url("../images/growth-close-up-environmental-lush-natural.jpg");
+  background-size: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -291,7 +294,15 @@ ul {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 1rem;
-  padding-bottom: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  max-width: 990px;
+  margin-bottom: 0.3rem;
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  -webkit-box-shadow: 0 1px 3px grey;
+          box-shadow: 0 1px 3px grey;
+  border-radius: 3px;
 }
 .board_section .board_caption_and_filters .search_input {
   font-size: 17px;
@@ -301,7 +312,6 @@ ul {
 }
 .board_section .board_caption_and_filters h3 {
   text-transform: capitalize;
-  color: #d9d9d9;
 }
 .board_section .loader {
   width: 80px;
@@ -322,8 +332,8 @@ ul {
 }
 
 .main_board {
-  padding-inline: 1rem;
-  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  padding-block: 1.5rem;
   -webkit-animation-name: fade_in_up;
           animation-name: fade_in_up;
   -webkit-animation-duration: 1s;
@@ -337,10 +347,11 @@ ul {
   -webkit-animation-direction: default;
           animation-direction: default;
   max-width: 990px;
-  background: #d9d9d9;
-  border: solid 1px grey;
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  -webkit-box-shadow: 0 0px 5px grey;
+          box-shadow: 0 0px 5px grey;
   border-radius: 3px;
-  position: relative;
 }
 .main_board .main_board_content {
   display: -webkit-box;
@@ -359,6 +370,7 @@ ul {
       -ms-flex-pack: start;
           justify-content: flex-start;
   gap: 1rem;
+  padding-right: 0.3rem;
 }
 .main_board .main_board_content .left_column {
   position: sticky;
@@ -397,7 +409,7 @@ ul {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   color: white;
-  background-color: #4E9F3D;
+  background-color: rgb(37, 86, 3);
   text-transform: uppercase;
   padding-block: 1rem;
   -ms-flex-item-align: end;
@@ -481,7 +493,7 @@ ul {
   border-radius: 5px;
   position: sticky;
   top: 0%;
-  background-color: #4E9F3D;
+  background-color: rgb(37, 86, 3);
   color: white;
   text-transform: uppercase;
   min-height: 4rem;
@@ -506,7 +518,9 @@ ul {
 }
 .main_board .main_board_content .right_column .facts_column:nth-child(even) .slot {
   background: none;
-  outline: solid 1px white;
+  -webkit-box-shadow: 0 0 2px #222;
+          box-shadow: 0 0 2px #222;
+  color: #222;
 }
 .main_board .main_board_content .right_column .facts_column {
   display: -webkit-box;
@@ -529,7 +543,9 @@ ul {
 .main_board .main_board_content .right_column .facts_column .slot {
   font-weight: 500;
   border-radius: 5px;
-  background-color: white;
+  background-color: #222;
+  color: #222;
+  color: #d9d9d9;
 }
 
 @media screen and (max-width: 1100px) {
@@ -624,7 +640,7 @@ ul {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border-bottom: #4E9F3D solid 5px;
+  border-bottom: rgb(37, 86, 3) solid 5px;
   -webkit-animation-name: rotate;
           animation-name: rotate;
   -webkit-animation-duration: 600ms;
@@ -805,7 +821,7 @@ ul {
   top: 100%;
   height: 3px;
   width: 100%;
-  background-color: #4E9F3D;
+  background-color: rgb(37, 86, 3);
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
   -webkit-animation-name: race;
@@ -866,7 +882,7 @@ ul {
   color: #191A19;
   -webkit-transform: scale(0.97);
           transform: scale(0.97);
-  background-color: #4E9F3D;
+  background-color: rgb(37, 86, 3);
 }
 @media screen and (max-width: 600px) {
   .auth input {
